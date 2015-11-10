@@ -1,14 +1,16 @@
-# async.js (Yet another)
+# async.js (yes, another one!)
 This is a light-weight approximate implementation of
 [ES7's async-await](https://github.com/tc39/ecmascript-asyncawait) pattern.
 
-It allows for simple creation of async function and "tasks".
+## Example
+It allows for simple creation of async function and "tasks". For example:
 
-For example:
 ```js
-var myThinger = {
+const async = require("marcosc-async");
+const myThinger = {
   doAsynThing: async(function*(url){
-    var result = yield fetch(url);
+    const response = yield fetch(url);
+    const text = yield response.text();
     return process(result);
   });
 }
@@ -17,8 +19,18 @@ var myThinger = {
 And task-like things can be created as follows:
 
 ```js
-var myTask = async.task(function*{
- var result = yield fetch(url);
- return result;
+const async = require("marcosc-async");
+// Run immediately
+const myTask = async.task(function*{
+  const response = yield fetch(url);
+  const text = yield response.text();
+  return process(result);
 }).then(doSomethingElse);
+```
+
+## Get it
+You can npm install it.
+
+```bash
+npm install marcosc-async --save-dev
 ```
