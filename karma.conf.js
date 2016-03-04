@@ -11,7 +11,17 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ["mocha", "chai-as-promised", "chai"],
+    frameworks: ["mocha", "chai-as-promised", "chai", "detectBrowsers"],
+
+    // configuration
+    detectBrowsers: {
+      enabled: true,
+      usePhantomJS: false,
+      postDetection: function(browsers) {
+        // no Safari support, because no generators
+        return browsers.filter(browser => browser !== "Safari" );
+      }
+    },
 
     // list of files / patterns to load in the browser
     files: [,
