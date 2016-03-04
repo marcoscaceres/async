@@ -179,6 +179,21 @@ describe("async API", () => {
     });
   });
 
+  describe("Thenable compatibility", () => {
+    it("Should resolve a thenable", ()=> {
+      var thenable = {
+        then() {
+          return "true";
+        }
+      };
+      var test = async(function*() {
+        var result = yield thenable;
+        expect(result).to.be(true);
+      });
+      async.task(test);
+    });
+  });
+
   describe("async's task() method", ()=> {
     it("should be a function", ()=> {
       expect(async).to.have.property("task");
