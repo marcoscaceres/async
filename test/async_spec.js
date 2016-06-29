@@ -173,8 +173,8 @@ describe("async API", () => {
     it("resolves a thenable.", () => {
       const test = async(function*() {
         let thenable = {
-          then(f) {
-            return f("pass");
+          then(resolve) {
+            return resolve("pass");
           },
         };
         let result = yield thenable;
@@ -182,7 +182,23 @@ describe("async API", () => {
       });
       return test().should.eventually.become("pass");
     });
-    it("rejects a thenable.", () => {
+    it("resolves a thenable.", () => {
+      const test = async(function*() {
+        let thenable = {
+          then(resolve, reject) {
+            return reject(new Error("pass"));
+          },
+        };
+        try{
+          yield thenable;
+        }catch(err){
+          return err.message;
+        }
+        return "fail";
+      });
+      return test().should.eventually.become("pass");
+    });
+    it("handles a thenable throwing.", () => {
       const err = new Error("Pass");
       const test = async(function*() {
         let thenable = {
