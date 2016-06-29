@@ -186,7 +186,7 @@ describe("async API", () => {
       const err = new Error("Pass");
       const test = async(function*() {
         let thenable = {
-          then(f) {
+          then() {
             throw err;
           }
         };
