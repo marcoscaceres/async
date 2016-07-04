@@ -195,17 +195,6 @@ describe("async API", () => {
     });
   });
 
-  xit("fetches 10 pages and resolves.", () => {
-    var test = async(function*() {
-      for (var i = 0; i < 10; i++) {
-        var r = yield fetch("/?test=" + i);
-        yield r.text();
-      }
-      return "pass";
-    });
-    return test().should.become("pass");
-  });
-
   describe("Thenable compatibility", () => {
     it("resolves a thenable.", () => {
       const test = async(function*() {
