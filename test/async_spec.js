@@ -8,7 +8,7 @@ const async = require("marcosc-async");
 
 describe("async API", () => {
   it("returns returns a function that returns promise.", () => {
-    const funct = async(function*(){
+    const funct = async(function*() {
       return "pass";
     });
     (typeof funct).should.equal("function");
@@ -33,12 +33,12 @@ describe("async API", () => {
 
   it("accepts multiple arguments.", () => {
     const test = async(function(arg1, arg2, arg3) {
-      let result = {arg1, arg2, arg3, length: arguments.length};
+      let result = { arg1, arg2, arg3, length: arguments.length };
       return result;
     });
     return test(1, 2, 3)
       .then(
-        result => result.should.deep.eql({arg1: 1, arg2: 2, arg3: 3, length: 3 })
+        result => result.should.deep.eql({ arg1: 1, arg2: 2, arg3: 3, length: 3 })
       );
   });
 
@@ -102,7 +102,7 @@ describe("async API", () => {
         err = ex.message;
       }
       const w = yield Promise.resolve("recovered_").then((v) => err + v);
-      const z = yield Promise.resolve("123").then((v) => w + v );
+      const z = yield Promise.resolve("123").then((v) => w + v);
       return z; //exception_recovered_123
     });
     return test().should.eventually.become("exception_recovered_123");
@@ -189,9 +189,9 @@ describe("async API", () => {
             return reject(new Error("pass"));
           },
         };
-        try{
+        try {
           yield thenable;
-        }catch(err){
+        } catch (err) {
           return err.message;
         }
         return "fail";
@@ -233,6 +233,7 @@ describe("async API", () => {
     });
     it("rejects after throwing.", () => {
       const error = new Error("Error");
+
       function* test() {
         try {
           yield Promise.reject(error);
