@@ -9,6 +9,9 @@ You can npm install it.
 npm install marcosc-async --save
 ```
 
+## Play with it!
+You can [play with the async API](http://marcoscaceres.github.io/async/example) through gh-pages.
+
 ## API
 Once you import it (using either a script tag or require), there will be
 an "async" function you can use on the global object.
