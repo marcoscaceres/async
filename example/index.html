@@ -7,7 +7,7 @@ For example,</p>
 <pre>
 var getText = async(function*(url){
   const response = yield fetch(url);
-  const text = yield reponse.text();
+  const text = yield response.text();
   return text;
 })
 getText("./")
