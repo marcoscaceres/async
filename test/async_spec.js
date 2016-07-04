@@ -1,4 +1,3 @@
-/*jshint mocha: true, noyield: true, node: true*/
 "use strict";
 const chai = require("chai");
 const chaiAsPromised = require("chai-as-promised");
@@ -7,6 +6,44 @@ chai.should();
 const async = require("marcosc-async");
 
 describe("async API", () => {
+
+  it("handles an immediately throwing sync function.", () => {
+    const error = new Error("test error");
+    const test = async(function() {
+      throw error;
+    });
+    return test().should.be.rejectedWith(error);
+  });
+
+  it("handles an immediately catch/throw sync function.", () => {
+    const error1 = new Error("error 1");
+    const error2 = new Error("error 2");
+    const test = async(function() {
+      try {
+        throw error1;
+      } catch (err) {
+        throw error2;
+      }
+    });
+    return test().should.be.rejectedWith(error2);
+  });
+
+  it("recovers from nested sync exceptions", () => {
+    const error1 = new Error("error 1");
+    const error2 = new Error("error 2");
+    const test = async(function() {
+      try {
+        throw error1;
+      } catch (err) {
+        try {
+          throw error2;
+        } catch (err) {}
+      }
+      return "pass";
+    });
+    return test().should.become("pass");
+  });
+
   it("returns returns a function that returns promise.", () => {
     const funct = async(function*() {
       return "pass";
