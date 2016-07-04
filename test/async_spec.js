@@ -3,7 +3,7 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 chai.should();
-const async = require('marcosc-async');
+const async = require('../lib/async');
 
 describe('async API', () => {
 
@@ -60,14 +60,37 @@ describe('async API', () => {
   });
 
   it('rejects when called with non-callable.', () => {
-    const promise = Promise.all([
-      async()().should.be.rejectedWith(TypeError),
-      async(null)().should.be.rejectedWith(TypeError),
-      async('a string')().should.be.rejectedWith(TypeError),
-      async({})().should.be.rejectedWith(TypeError),
-    ]);
+    (function() {
+      try {
+        async(()=> {});
+      } catch (err) {
+        console.log(err);
+      }
+    }).should.not.throw();
 
-    return promise;
+    (function() {
+      try {
+        async(function*() {});
+      } catch (err) {
+        console.log(err);
+      }
+    }).should.not.throw();
+
+    (function() {
+      async();
+    }).should.throw(TypeError);
+
+    (function() {
+      async(null);
+    }).should.throw(TypeError);
+
+    (function() {
+      async('a string');
+    }).should.throw(TypeError);
+
+    (function() {
+      async({});
+    }).should.throw(TypeError);
   });
 
   it('immediately resolves when passed function.', () => {
