@@ -1,0 +1,16 @@
+<!doctype html>
+<script src="../lib/async.js">
+</script>
+<h1>Async example</h1>
+<p>Use developer console to play with it.
+For example,</p>
+<pre>
+var getText = async(function*(url){
+  const response = yield fetch(url);
+  const text = yield reponse.text();
+  return text;
+})
+getText("./")
+  .then(text => console.log("text is:", text))
+  .catch(err => console.log("Error!", err));
+</pre>
