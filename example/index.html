@@ -5,11 +5,11 @@
 <p>Use developer console to play with it.
 For example,</p>
 <pre>
-var getText = async(function*(url){
+var getText = async(function*(url) {
   const response = yield fetch(url);
   const text = yield response.text();
   return text;
-})
+});
 getText("./")
   .then(text => console.log("text is:", text))
   .catch(err => console.log("Error!", err));
