@@ -4,11 +4,10 @@
   "description": "Lightweight promise/generator machinery.",
   "main": "lib/async.js",
   "scripts": {
-    "test": "npm run karma",
+    "test": "mocha test/*.js",
     "pretest": "npm run jshint && npm run jscs",
     "jshint": "jshint lib test",
-    "karma": "karma start --single-run",
-    "jscs": "jscs --esnext lib test"
+    "jscs": "jscs lib test"
   },
   "repository": {
     "type": "git",
@@ -21,7 +20,7 @@
     "functional"
   ],
   "author": "Marcos Caceres",
-  "license": "MPL",
+  "license": "CC0-1.0",
   "bugs": {
     "url": "https://github.com/marcoscaceres/async/issues"
   },
@@ -31,16 +30,6 @@
     "chai-as-promised": "^5.3.0",
     "jscs": "^3.0.5",
     "jshint": "^2.9.2",
-    "karma": "^1.1.0",
-    "karma-chai": "^0.1.0",
-    "karma-chai-as-promised": "^0.1.2",
-    "karma-chrome-launcher": "^1.0.1",
-    "karma-detect-browsers": "^2.1.0",
-    "karma-firefox-launcher": "^1.0.0",
-    "karma-mocha": "^1.1.1",
-    "karma-mocha-reporter": "^2.0.4",
-    "karma-opera-launcher": "^1.0.0",
-    "karma-safaritechpreview-launcher": "0.0.4",
     "mocha": "^2.5.3"
   }
 }
