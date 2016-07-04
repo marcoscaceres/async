@@ -1,5 +1,14 @@
 # Change Log
 
+## [2.0.5](https://github.com/marcoscaceres/async/tree/2.0.5) (2016-07-04)
+[Full Changelog](https://github.com/marcoscaceres/async/compare/v2.0.4...2.0.5)
+
+## [v2.0.4](https://github.com/marcoscaceres/async/tree/v2.0.4) (2016-07-04)
+[Full Changelog](https://github.com/marcoscaceres/async/compare/v2.0.2...v2.0.4)
+
+## [v2.0.2](https://github.com/marcoscaceres/async/tree/v2.0.2) (2016-06-29)
+[Full Changelog](https://github.com/marcoscaceres/async/compare/v2.0.1...v2.0.2)
+
 ## [v2.0.1](https://github.com/marcoscaceres/async/tree/v2.0.1) (2016-06-27)
 [Full Changelog](https://github.com/marcoscaceres/async/compare/v1.1.3...v2.0.1)
 
