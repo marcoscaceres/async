@@ -1,6 +1,6 @@
 {
   "name": "marcosc-async",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "Lightweight promise/generator machinery.",
   "main": "lib/async.js",
   "scripts": {
