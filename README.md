@@ -1,4 +1,6 @@
 # async.js (yes, another one!)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/marcoscaceres/async.svg)](https://greenkeeper.io/)
 This is a light-weight approximate implementation of
 [ES7's async-await](https://github.com/tc39/ecmascript-asyncawait) pattern.
 
